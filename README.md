@@ -15,10 +15,22 @@ ehco "export PATH=$PWD/bin:\$PATH" >> ~/.zshrc
 
 | command name | script file | bref description | 
 | -- | -- | -- |
+| new-pyfile | create_py_template.sh | generate file with description for doxygen |
 | code-description-updatever | update_version.sh | update description of code for doxygen |
 | monitor-fd | monitor_fd.sh | monitor to the number of file discriptor |
 
 ### Detail of commands
+
+#### `new-pyfile`
+
+This command generate Python file with description.
+
+The first argument specifies the file path and name to be genrated.
+
+The seccond argument specifies the author name. If you do not specifies name.
+This command first attempts to retrieve the name using `git config --global user.name`, and if it cannot be retrieved, it uses username.
+
+The thrid argument specifies description of @brief. The default description is "template text"
 
 #### `code-description-updatever`
 

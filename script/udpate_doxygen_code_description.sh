@@ -7,8 +7,8 @@ if [ $# -lt 1 ]; then
 fi
 
 file="$1"
-apply="$2"
-update_type="$3"
+update_type="$2"
+apply="$3"
 
 # ファイル存在チェック
 if [ ! -f "$file" ]; then

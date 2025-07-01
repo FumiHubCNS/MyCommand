@@ -36,6 +36,7 @@ dump_scripts_section() {
 
 # === dump executable in .venv/bin  ===
 dump_venv_executables() {
+		find "$VENV_BIN" -type f -perm +111 -exec basename {} \; | sort | sed 's/^/  /'
     if [[ -d "$VENV_BIN" ]]; then
     	echo "Fetching: $pwd/venv/bin:"
         echo "[executables] in .venv/bin:"

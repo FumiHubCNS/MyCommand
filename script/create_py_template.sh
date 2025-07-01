@@ -48,8 +48,23 @@ cat <<EOF > "$file_path"
 @brief $brief
 """
 
+this_file_path = pathlib.Path(__file__).parent
+
 def main():
-	print("hello world!")
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("-c", "--command", help="dump comment", type=str, default="hello world!")
+    parser.add_argument("-f", "--flag", help="sample flag", action="store_true")
+
+    args = parser.parse_args()
+
+    text = args.command
+    flag = args.flag
+
+    print(f"\{text} with \{flag}")
+
+if __name__ == "__main__":
+    main()
 EOF
 
 chmod +x "$file_path"

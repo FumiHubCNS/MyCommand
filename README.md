@@ -15,13 +15,14 @@ ehco "export PATH=$PWD/bin:\$PATH" >> ~/.zshrc
 
 | command name | script file | bref description | 
 | -- | -- | -- |
-| new-pyfile | create_py_template.sh | generate file with description for doxygen |
-| code-description-updatever | update_version.sh | update description of code for doxygen |
+| new-pf | create_py_template.sh | generate file with description for doxygen |
+| update-cdd | update_version.sh | update description of code for doxygen |
 | monitor-fd | monitor_fd.sh | monitor to the number of file discriptor |
+| dump-us | dump-uv-scripts.sh | dump uv scripts |
 
 ### Detail of commands
 
-#### `new-pyfile`
+#### `new-pf (create python file with code desctiprion)`
 
 This command generate Python file with description.
 
@@ -32,7 +33,7 @@ This command first attempts to retrieve the name using `git config --global user
 
 The thrid argument specifies description of @brief. The default description is "template text"
 
-#### `code-description-updatever`
+#### `update-cdd (update code description)`
 
 This tool automatically updates metadata (`@version`, `@date`) embedded in Python script files.
 
@@ -45,7 +46,7 @@ The second argument specifies whether to overwrite the file. If `apply` is speci
 The thrid argument specifies whether it is a major update or a minor update. If `minor` is specified, only minor updates are applied. For example, (1 -> 1.1).
 
 ```zsh
-code-description-updatever [path] [overwrite flag] [version rule]
+update-cdd [path] [overwrite flag] [version rule]
 
 ```
 
@@ -61,7 +62,7 @@ Example to be overwritten descriptions
 """
 ```
 
-#### `monitor-fd`
+#### `monitor-fd` (monitor file　descriptor)
 
 Command to monitor the number and details of file descriptors currently in use
 
@@ -70,3 +71,20 @@ First argument: Maximum length of the command string to display (integer). If 0,
 Second argument: Display only processes whose command names contain this string (optional)
 
 When the script is terminated using `Ctrl+C`, it outputs "監視終了" and exits normally.
+
+
+#### `dump-us` (dump uv scripts)
+
+This command show the command list that can be used in `uv run`.
+these commands is defined in `pyproject.toml` , and this command read this file.
+you have to execute command in working directory of uv.
+
+
+this command can search the commands added by [tool.uv.sources] using `curl`.
+if you can use `curl` command, please use `--use-network`.
+if you can not use it's command, this command search `.venv/bin/`.
+(in this case, other excecutabls are also dumped)
+
+```zs
+dump-us [--use-network]
+```

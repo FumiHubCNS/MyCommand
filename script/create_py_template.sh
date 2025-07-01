@@ -63,7 +63,7 @@ def main():
     text = args.command
     flag = args.flag
 
-    print(f"\{text} with \{flag}")
+    print(f"{text} with {flag}")
 
 if __name__ == "__main__":
     main()

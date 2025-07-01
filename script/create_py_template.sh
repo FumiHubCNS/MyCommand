@@ -47,6 +47,8 @@ cat <<EOF > "$file_path"
 @date $current_date
 @brief $brief
 """
+import argparse
+import pathlib
 
 this_file_path = pathlib.Path(__file__).parent
 
